@@ -42,6 +42,7 @@ public class MainActivity extends ActionBarActivity {
     private int currentPosition = 0;
 
     private String test = "";
+    private String test2 = "";
 
     /*AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
         @Override
