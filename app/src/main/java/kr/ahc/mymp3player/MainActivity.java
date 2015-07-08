@@ -41,6 +41,8 @@ public class MainActivity extends ActionBarActivity {
     private boolean is_autoplay = false;
     private int currentPosition = 0;
 
+    private String test = "";
+
     /*AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
