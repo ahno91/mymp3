@@ -4,8 +4,9 @@ package kr.ahc.mymp3player;
 import java.io.IOException;
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Build;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class MusicPlayActivity extends Activity {
@@ -27,15 +29,18 @@ public class MusicPlayActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mlistview);
+        setContentView(R.layout.activity_view);
 
         String song = getIntent().getStringExtra("song");
         String song_title = getIntent().getStringExtra("song_title");
+//        String song_name = getIntent().getStringExtra("song_name");
         Log.d(TAG, "Song ===> " + song);
-        playSong( song);
+        playSong(song);
 
-        TextView title = (TextView)findViewById(R.id.textView2);
-        title.setText( song_title);
+// name = (TextView)findViewById(R.id.textView2);
+        TextView title = (TextView)findViewById(R.id.textView);
+        title.setText(song_title);
+//        name.setText(song_name);
         //title.setText(song.substring( song.lastIndexOf("/") ));
 
         //
@@ -50,7 +55,6 @@ public class MusicPlayActivity extends Activity {
     @Override
     public void onDestroy() {
         stopAudio();
-
         super.onDestroy();
     }
 

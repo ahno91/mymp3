@@ -3,13 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
+
 
     <ImageView
         android:layout_width="70dp"
-        android:layout_height="match_parent"
+        android:layout_height="70dp"
         android:id="@+id/imageView"
-        android:src="@drawable/abc_btn_check_to_on_mtrl_000" />
+        android:src="@drawable/nemonarr" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -35,8 +36,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
             android:id="@+id/textView3" />
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>

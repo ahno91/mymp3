@@ -5,6 +5,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -14,12 +15,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -86,8 +89,20 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                return true;
+            case R.id.action_item1:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void playAudio(String filepath) throws IllegalArgumentException,
@@ -159,7 +174,7 @@ public class MainActivity extends Activity {
     }
 
 
-   /* public ArrayList<FileItem> updateSongList() {
+  /*  public ArrayList<FileItem> updateSongList() {
         ArrayList<FileItem> items = new ArrayList<FileItem>();
         File home = new File(MEDIA_PATH);
         File[] fileLists = home.listFiles(new Mp3Filter());
@@ -230,7 +245,7 @@ public class MainActivity extends Activity {
         return items;
     }
 
-    class Mp3Filter implements FilenameFilter {
+    class Mp3Filter implements FilenameFilter { // 내가 원하는 파일 확장자만 검색
         public boolean accept(File dir, String name) {
             return (name.endsWith(".mp3"));
         }
@@ -255,7 +270,7 @@ public class MainActivity extends Activity {
             View item = null;
             if(convertView == null){
                 LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-                item = inflater.inflate(R.layout.mlistview, null);
+                item = inflater.inflate(R.layout.activity_listview, null);
             } else {
                 item = convertView;
             }
@@ -267,7 +282,8 @@ public class MainActivity extends Activity {
             SongItem song = getItem(position);
 
 //            img.setImageResource( song.);
-//            vTime.setText( user.mTime);
+
+            vTime.setText( song.getFilepath());
             vName.setText( song.getTitle());
             vDesc.setText( song.getDisplayName());
             return item;
